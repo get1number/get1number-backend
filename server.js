@@ -9,7 +9,6 @@ app.use(express.json())
 
 let pool = null
 
-// espera 2 segundos pra garantir que a env DATABASE_URL carregou
 setTimeout(() => {
   if (process.env.DATABASE_URL) {
     console.log('DATABASE_URL found, creating pool...')
@@ -22,7 +21,6 @@ setTimeout(() => {
   }
 }, 2000)
 
-// rota básica pra ver status da API e do DB
 app.get('/', async (req, res) => {
   try {
     if (!pool) {
@@ -51,7 +49,6 @@ app.get('/', async (req, res) => {
   }
 })
 
-// porta padrão Render
 const port = process.env.PORT || 3000
 app.listen(port, () => {
   console.log('Server running on port ' + port)
